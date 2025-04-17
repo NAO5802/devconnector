@@ -10,14 +10,11 @@ const App = () => (
   <BrowserRouter>
     <Fragment>
       <Navbar />
-      <section className='container'>
-        <Routes>
-          {/* // TODO: Landingだけcontainerに入れないようにする */}
-          <Route path='/' element={<Landing />} />
-          <Route path='/register' element={<Register />} />
-          <Route path='/login' element={<Login />} />
-        </Routes>
-      </section>
+      <Routes>
+        <Route path='/' element={<Landing />} />
+        <Route path='/register' element={<Register />} />
+        <Route path='/login' element={<Login />} />
+      </Routes>
     </Fragment>
   </BrowserRouter>
 );
