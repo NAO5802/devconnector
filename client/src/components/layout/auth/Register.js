@@ -2,6 +2,8 @@ import React, { Fragment, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { setAlert } from '../../../actions/alert';
+import PropTypes from 'prop-types';
+import Alert from '../Alert';
 
 export const Register = () => {
   const [formData, setFormData] = useState({
@@ -28,6 +30,7 @@ export const Register = () => {
   return (
     <Fragment>
       <section className='container'>
+        <Alert />
         <h1 className='large text-primary'>Sign Up</h1>
         <p className='lead'>
           <i className='fas fa-user'></i> Create Your Account
@@ -85,6 +88,10 @@ export const Register = () => {
       </section>
     </Fragment>
   );
+};
+
+Register.propTypes = {
+  setAlert: PropTypes.func.isRequired,
 };
 
 export default Register;
