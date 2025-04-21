@@ -1,9 +1,8 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 
 const Alert = () => {
-  const alerts = useSelector(selectAlerts);
+  const alerts = useSelector((state) => state.alert);
 
   return (
     alerts !== null &&
@@ -15,11 +14,5 @@ const Alert = () => {
     ))
   );
 };
-
-Alert.propTypes = {
-  alerts: PropTypes.array.isRequired,
-};
-
-const selectAlerts = (state) => state.alert;
 
 export default Alert;

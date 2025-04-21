@@ -90,8 +90,4 @@ export const Register = () => {
   );
 };
 
-Register.propTypes = {
-  setAlert: PropTypes.func.isRequired,
-};
-
 export default Register;
