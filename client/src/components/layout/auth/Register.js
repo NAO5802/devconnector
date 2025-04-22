@@ -1,6 +1,6 @@
-import React, { Fragment, useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
+import React, { Fragment, useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom';
 import { setAlert } from '../../../actions/alert';
 import Alert from '../Alert';
 import { register } from '../../../actions/auth';
@@ -13,6 +13,15 @@ export const Register = () => {
     password2: '',
   });
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate('/dashboard', { replace: true });
+      return;
+    }
+  });
 
   const { name, email, password, password2 } = formData;
 

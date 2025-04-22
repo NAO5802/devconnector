@@ -1,11 +1,25 @@
-import React, { Fragment, useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { Fragment, useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom';
+import { login } from '../../../actions/auth';
+import Alert from '../Alert';
 
 export const Login = () => {
   const [formData, setFormData] = useState({
     email: '',
     password: '',
   });
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate('/dashboard', { replace: true });
+      return;
+    }
+  });
+
   const { email, password } = formData;
 
   const onChange = (e) => {
@@ -13,13 +27,13 @@ export const Login = () => {
   };
   const onSubmit = (e) => {
     e.preventDefault();
-    console.log('Form submitted');
+    dispatch(login({ email, password }));
   };
 
   return (
     <Fragment>
       <section className='container'>
-        {/* <div className='alert alert-danger'>Invalid credentials</div> */}
+        <Alert />
         <h1 className='large text-primary'>Sign In</h1>
         <p className='lead'>
           <i className='fas fa-user'></i> Sign into Your Account
@@ -27,6 +41,7 @@ export const Login = () => {
         <form className='form' onSubmit={(e) => onSubmit(e)}>
           <div className='form-group'>
             <input
+              autoComplete='email'
               type='email'
               placeholder='Email Address'
               name='email'
@@ -37,6 +52,7 @@ export const Login = () => {
           </div>
           <div className='form-group'>
             <input
+              autoComplete='current-password'
               type='password'
               placeholder='Password'
               name='password'
