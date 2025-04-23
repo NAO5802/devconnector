@@ -18,7 +18,7 @@ export const Login = () => {
       navigate('/dashboard', { replace: true });
       return;
     }
-  });
+  }, [isAuthenticated]);
 
   const { email, password } = formData;
 

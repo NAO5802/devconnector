@@ -21,7 +21,7 @@ export const Register = () => {
       navigate('/dashboard', { replace: true });
       return;
     }
-  });
+  }, [isAuthenticated]);
 
   const { name, email, password, password2 } = formData;
 
