@@ -1,8 +1,8 @@
 import React, { Fragment, useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
-import { login } from '../../../actions/auth';
-import Alert from '../Alert';
+import Alert from '../layout/Alert';
+import { login } from '../../actions/auth';
 
 export const Login = () => {
   const [formData, setFormData] = useState({

@@ -1,9 +1,9 @@
 import React, { Fragment, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
-import { setAlert } from '../../../actions/alert';
-import Alert from '../Alert';
-import { register } from '../../../actions/auth';
+import { setAlert } from '../../actions/alert';
+import Alert from '../layout/Alert';
+import { register } from '../../actions/auth';
 
 export const Register = () => {
   const [formData, setFormData] = useState({
@@ -97,5 +97,3 @@ export const Register = () => {
     </Fragment>
   );
 };
-
-export default Register;
