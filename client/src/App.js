@@ -5,6 +5,8 @@ import { Landing } from './components/layout/Landing';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { Login } from './components/layout/auth/Login';
 import { Register } from './components/layout/auth/Register';
+import Dashboard from './components/dashboard/Dashboard';
+import PrivateRoute from './components/routing/PrivateRoute';
 import setAuthToken from './utils/setAuthToken';
 // Redux
 import { Provider } from 'react-redux';
@@ -29,6 +31,14 @@ const App = () => {
             <Route path='/' element={<Landing />} />
             <Route path='/register' element={<Register />} />
             <Route path='/login' element={<Login />} />
+            <Route
+              path='/dashboard'
+              element={
+                <PrivateRoute>
+                  <Dashboard />
+                </PrivateRoute>
+              }
+            />
           </Routes>
         </Fragment>
       </BrowserRouter>
