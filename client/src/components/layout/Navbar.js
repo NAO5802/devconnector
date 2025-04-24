@@ -15,6 +15,11 @@ export const Navbar = () => {
   const authLinks = (
     <ul>
       <li>
+        <Link to='/profiles'>
+          <span className='hide-sm'>Developers</span>
+        </Link>
+      </li>
+      <li>
         <Link to='/dashboard'>
           <i className='fas fa-user'></i>{' '}
           <span className='hide-sm'>Dashboard</span>
@@ -31,7 +36,9 @@ export const Navbar = () => {
   const guestLinks = (
     <ul>
       <li>
-        <a href='!#'>Developers</a>
+        <Link to='/profiles'>
+          <span className='hide-sm'>Developers</span>
+        </Link>
       </li>
       <li>
         <Link to='/register'>Register</Link>

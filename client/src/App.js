@@ -10,6 +10,7 @@ import { CreateProfile } from './components/profile-form/CreateProfile';
 import { EditProfile } from './components/profile-form/EditProfile';
 import { AddExperience } from './components/profile-form/AddExperience';
 import { AddEducation } from './components/profile-form/AddEducation';
+import Profiles from './components/profiles/Profiles';
 import PrivateRoute from './components/routing/PrivateRoute';
 import setAuthToken from './utils/setAuthToken';
 // Redux
@@ -35,6 +36,7 @@ const App = () => {
             <Route path='/' element={<Landing />} />
             <Route path='/register' element={<Register />} />
             <Route path='/login' element={<Login />} />
+            <Route path='/profiles' element={<Profiles />} />
             <Route
               path='/dashboard'
               element={
