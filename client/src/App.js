@@ -6,14 +6,16 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Dashboard from './components/dashboard/Dashboard';
 import { Login } from './components/auth/Login';
 import { Register } from './components/auth/Register';
+import { CreateProfile } from './components/profile-form/CreateProfile';
+import { EditProfile } from './components/profile-form/EditProfile';
+import { AddExperience } from './components/profile-form/AddExperience';
+import { AddEducation } from './components/profile-form/AddEducation';
 import PrivateRoute from './components/routing/PrivateRoute';
 import setAuthToken from './utils/setAuthToken';
 // Redux
 import { Provider } from 'react-redux';
 import store from './store';
 import { loadUser } from './actions/auth';
-import { CreateProfile } from './components/profile-form/CreateProfile';
-import { EditProfile } from './components/profile-form/EditProfile';
 
 if (localStorage.token) {
   setAuthToken(localStorage.token);
@@ -54,6 +56,22 @@ const App = () => {
               element={
                 <PrivateRoute>
                   <EditProfile />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path='/add-experience'
+              element={
+                <PrivateRoute>
+                  <AddExperience />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path='/add-education'
+              element={
+                <PrivateRoute>
+                  <AddEducation />
                 </PrivateRoute>
               }
             />
