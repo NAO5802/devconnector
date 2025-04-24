@@ -47,7 +47,6 @@ export const AddEducation = () => {
               name='school'
               value={school}
               onChange={(e) => onChange(e)}
-              required
             />
           </div>
           <div className='form-group'>
@@ -57,7 +56,6 @@ export const AddEducation = () => {
               name='degree'
               value={degree}
               onChange={(e) => onChange(e)}
-              required
             />
           </div>
           <div className='form-group'>
@@ -70,7 +68,7 @@ export const AddEducation = () => {
             />
           </div>
           <div className='form-group'>
-            <h4>From Date</h4>
+            <h4>* From Date</h4>
             <input
               type='date'
               name='from'

@@ -46,7 +46,6 @@ export const AddExperience = () => {
               name='title'
               value={title}
               onChange={(e) => onChange(e)}
-              required
             />
           </div>
           <div className='form-group'>
@@ -56,7 +55,6 @@ export const AddExperience = () => {
               name='company'
               value={company}
               onChange={(e) => onChange(e)}
-              required
             />
           </div>
           <div className='form-group'>
@@ -69,7 +67,7 @@ export const AddExperience = () => {
             />
           </div>
           <div className='form-group'>
-            <h4>From Date</h4>
+            <h4>* From Date</h4>
             <input
               type='date'
               name='from'
