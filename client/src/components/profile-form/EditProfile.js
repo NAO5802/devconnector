@@ -77,7 +77,7 @@ export const EditProfile = () => {
           : profileState.profile.social.instagram,
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [profileState.loading]);
+  }, [dispatch, profileState.loading]);
 
   const {
     company,

@@ -11,7 +11,7 @@ const Profiles = () => {
 
   useEffect(() => {
     dispatch(getProfiles());
-  }, []);
+  }, [dispatch]);
 
   const profileItems = profiles.map((profile) => (
     <ProfileItem key={profile._id} profile={profile} />
