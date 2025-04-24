@@ -1,6 +1,6 @@
 import React, { Fragment, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getCurrentProfile } from '../../actions/profile';
+import { deleteAccount, getCurrentProfile } from '../../actions/profile';
 import { Spinner } from '../layout/Spinner';
 import { Link } from 'react-router-dom';
 import Alert from '../layout/Alert';
@@ -18,6 +18,13 @@ const Dashboard = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  const onDeleteAccount = () => {
+    if (!window.confirm('Are you sure? This can NOT be undone!')) {
+      return;
+    }
+    dispatch(deleteAccount());
+  };
+
   return profileState.loading && profileState.profile === null ? (
     <Spinner />
   ) : (
@@ -33,6 +40,14 @@ const Dashboard = () => {
             <DashboardActions />
             <Experience experiences={profileState.profile.experience} />
             <Education educations={profileState.profile.education} />
+            <div className='my-2'>
+              <button
+                className='btn btn-danger'
+                onClick={() => onDeleteAccount()}
+              >
+                <i className='fas fa-user-minus'></i> Delete My Account
+              </button>
+            </div>
           </Fragment>
         ) : (
           <Fragment>
