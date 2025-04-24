@@ -15,6 +15,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     dispatch(getCurrentProfile());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return profileState.loading && profileState.profile === null ? (
