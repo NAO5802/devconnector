@@ -4,6 +4,7 @@ import { getCurrentProfile } from '../../actions/profile';
 import { Spinner } from '../layout/Spinner';
 import { Link } from 'react-router-dom';
 import Alert from '../layout/Alert';
+import { DashboardActions } from './DashboardActions';
 
 const Dashboard = () => {
   const dispatch = useDispatch();
@@ -25,7 +26,9 @@ const Dashboard = () => {
           <i className='fas fa-user'></i> Welcome {user && user.name}
         </p>
         {profileState.profile !== null ? (
-          <Fragment>has </Fragment>
+          <Fragment>
+            <DashboardActions />
+          </Fragment>
         ) : (
           <Fragment>
             <p>You have not yet setup a profile, please add some info</p>

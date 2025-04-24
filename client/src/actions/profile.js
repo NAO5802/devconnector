@@ -35,10 +35,10 @@ export const saveProfile =
         payload: res.data,
       });
       dispatch(
-        setAlert(edit ? 'Profile Updated' : 'Profile Created'),
-        'success'
+        setAlert(edit ? 'Profile Updated' : 'Profile Created', 'success')
       );
 
+      // TODO: component側に移せないか
       if (!edit) {
         navigate('/dashboard');
       }

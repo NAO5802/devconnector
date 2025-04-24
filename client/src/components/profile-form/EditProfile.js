@@ -1,12 +1,13 @@
-import React, { Fragment, useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { saveProfile } from '../../actions/profile';
+import React, { Fragment, useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getCurrentProfile, saveProfile } from '../../actions/profile';
 import { Link, useNavigate } from 'react-router-dom';
 import Alert from '../layout/Alert';
 
-export const CreateProfile = () => {
+export const EditProfile = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const profileState = useSelector((state) => state.profile);
   const [formData, setFormData] = useState({
     company: '',
     website: '',
@@ -21,8 +22,61 @@ export const CreateProfile = () => {
     linkedin: '',
     instagram: '',
   });
-
   const [displaySocialInputs, toggleSocialInputs] = useState(false);
+
+  useEffect(() => {
+    dispatch(getCurrentProfile());
+    setFormData({
+      company:
+        profileState.loading || !profileState.profile.company
+          ? ''
+          : profileState.profile.company,
+      website:
+        profileState.loading || !profileState.profile.website
+          ? ''
+          : profileState.profile.website,
+      location:
+        profileState.loading || !profileState.profile.location
+          ? ''
+          : profileState.profile.location,
+      status:
+        profileState.loading || !profileState.profile.status
+          ? ''
+          : profileState.profile.status,
+      skills:
+        profileState.loading || !profileState.profile.skills
+          ? ''
+          : profileState.profile.skills.join(','),
+      githubusername:
+        profileState.loading || !profileState.profile.githubusername
+          ? ''
+          : profileState.profile.githubusername,
+      bio:
+        profileState.loading || !profileState.profile.bio
+          ? ''
+          : profileState.profile.bio,
+      youtube:
+        profileState.loading || !profileState.profile.social
+          ? ''
+          : profileState.profile.social.youtube,
+      twitter:
+        profileState.loading || !profileState.profile.social
+          ? ''
+          : profileState.profile.social.twitter,
+      facebook:
+        profileState.loading || !profileState.profile.social
+          ? ''
+          : profileState.profile.social.facebook,
+      linkedin:
+        profileState.loading || !profileState.profile.social
+          ? ''
+          : profileState.profile.social.linkedin,
+      instagram:
+        profileState.loading || !profileState.profile.social
+          ? ''
+          : profileState.profile.social.instagram,
+    });
+  }, [profileState.loading]);
 
   const {
     company,
@@ -44,14 +98,14 @@ export const CreateProfile = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    dispatch(saveProfile(formData, navigate));
+    dispatch(saveProfile(formData, navigate, true));
   };
 
   return (
     <Fragment>
       <section className='container'>
         <Alert />
-        <h1 className='large text-primary'>Create Your Profile</h1>
+        <h1 className='large text-primary'>Edit Your Profile</h1>
         <p className='lead'>
           <i className='fas fa-user'></i> Let's get some information to make
           your profile stand out
