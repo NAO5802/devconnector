@@ -11,6 +11,7 @@ import { EditProfile } from './components/profile-form/EditProfile';
 import { AddExperience } from './components/profile-form/AddExperience';
 import { AddEducation } from './components/profile-form/AddEducation';
 import Profiles from './components/profiles/Profiles';
+import Profile from './components/profile/Profile';
 import PrivateRoute from './components/routing/PrivateRoute';
 import setAuthToken from './utils/setAuthToken';
 // Redux
@@ -37,6 +38,7 @@ const App = () => {
             <Route path='/register' element={<Register />} />
             <Route path='/login' element={<Login />} />
             <Route path='/profiles' element={<Profiles />} />
+            <Route path='/profile/:userId' element={<Profile />} />
             <Route
               path='/dashboard'
               element={
