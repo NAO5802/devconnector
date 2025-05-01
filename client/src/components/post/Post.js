@@ -6,6 +6,7 @@ import Alert from '../layout/Alert';
 import { Spinner } from '../layout/Spinner';
 import PostItem from '../posts/PostItem';
 import CommentForm from './CommentForm';
+import CommentItem from './CommentItem';
 
 const Post = (props) => {
   const dispatch = useDispatch();
@@ -28,6 +29,11 @@ const Post = (props) => {
         </Link>
         <PostItem post={post} showActions={false} />
         <CommentForm postId={postId} />
+        <div className='comments'>
+          {post.comments.map((comment) => (
+            <CommentItem key={comment._id} comment={comment} postId={postId} />
+          ))}
+        </div>
       </section>
       ;
     </Fragment>
