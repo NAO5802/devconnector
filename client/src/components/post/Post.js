@@ -5,6 +5,7 @@ import { Link, useParams } from 'react-router-dom';
 import Alert from '../layout/Alert';
 import { Spinner } from '../layout/Spinner';
 import PostItem from '../posts/PostItem';
+import CommentForm from './CommentForm';
 
 const Post = (props) => {
   const dispatch = useDispatch();
@@ -21,10 +22,12 @@ const Post = (props) => {
   ) : (
     <Fragment>
       <section className='container'>
+        <Alert />
         <Link to='/posts' className='btn'>
           Back To Posts
         </Link>
         <PostItem post={post} showActions={false} />
+        <CommentForm postId={postId} />
       </section>
       ;
     </Fragment>
