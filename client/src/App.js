@@ -12,6 +12,7 @@ import { AddExperience } from './components/profile-form/AddExperience';
 import { AddEducation } from './components/profile-form/AddEducation';
 import Profiles from './components/profiles/Profiles';
 import Profile from './components/profile/Profile';
+import { Posts } from './components/posts/Posts';
 import PrivateRoute from './components/routing/PrivateRoute';
 import setAuthToken from './utils/setAuthToken';
 // Redux
@@ -76,6 +77,14 @@ const App = () => {
               element={
                 <PrivateRoute>
                   <AddEducation />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path='/posts'
+              element={
+                <PrivateRoute>
+                  <Posts />
                 </PrivateRoute>
               }
             />
