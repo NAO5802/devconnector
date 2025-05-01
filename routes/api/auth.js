@@ -57,16 +57,12 @@ router.post(
           id: user.id,
         },
       };
+      const jwtSecret = process.env.jwtSecret || config.get('jwtSecret');
 
-      jwt.sign(
-        payload,
-        config.get('jwtSecret'),
-        { expiresIn: 360000 },
-        (err, token) => {
-          if (err) throw err;
-          res.json({ token });
-        }
-      );
+      jwt.sign(payload, jwtSecret, { expiresIn: 360000 }, (err, token) => {
+        if (err) throw err;
+        res.json({ token });
+      });
     } catch (err) {}
   }
 );
