@@ -2,6 +2,7 @@ import axios from 'axios';
 import {
   ADD_POST,
   DELETE_POST,
+  GET_POST,
   GET_POSTS,
   POST_ERROR,
   UPDATE_LIKES,
@@ -14,6 +15,22 @@ export const getPosts = () => async (dispatch) => {
 
     dispatch({
       type: GET_POSTS,
+      payload: res.data,
+    });
+  } catch (err) {
+    dispatch({
+      type: POST_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status },
+    });
+  }
+};
+
+export const getPost = (postId) => async (dispatch) => {
+  try {
+    const res = await axios.get(`/api/posts/${postId}`);
+
+    dispatch({
+      type: GET_POST,
       payload: res.data,
     });
   } catch (err) {

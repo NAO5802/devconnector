@@ -29,7 +29,11 @@ export const Posts = () => {
           <PostForm />
           <div className='posts'>
             {posts.map((post) => (
-              <PostItem key={post._id} post={post}></PostItem>
+              <PostItem
+                key={post._id}
+                post={post}
+                showActions={true}
+              ></PostItem>
             ))}
           </div>
         </Fragment>
