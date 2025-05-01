@@ -1,13 +1,22 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import Moment from 'react-moment';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { addLike, removeLike } from '../../actions/post';
 
 const PostItem = ({
-  post: { _id, text, name, avatar, user, likes, comments, date },
+  post: { _id: postId, text, name, avatar, user, likes, comments, date },
 }) => {
+  const dispatch = useDispatch();
   const auth = useSelector((state) => state.auth);
+
+  const onLike = (postId) => {
+    dispatch(addLike(postId));
+  };
+  const onRemoveLike = (postId) => {
+    dispatch(removeLike(postId));
+  };
 
   return (
     <div className='post bg-white p-1 my-1'>
@@ -22,14 +31,22 @@ const PostItem = ({
         <p className='post-date'>
           Posted on <Moment format='YYYY/MM/DD'>{date}</Moment>
         </p>
-        <button type='button' className='btn btn-light'>
+        <button
+          onClick={(e) => onLike(postId)}
+          type='button'
+          className='btn btn-light'
+        >
           <i className='fas fa-thumbs-up'></i>{' '}
           <span>{likes.length > 0 && <span>{likes.length}</span>}</span>
         </button>
-        <button type='button' className='btn btn-light'>
+        <button
+          onClick={(e) => onRemoveLike(postId)}
+          type='button'
+          className='btn btn-light'
+        >
           <i className='fas fa-thumbs-down'></i>
         </button>
-        <Link to={`/post/${_id}`} className='btn btn-primary'>
+        <Link to={`/post/${postId}`} className='btn btn-primary'>
           Discussion{' '}
           {comments.length > 0 && (
             <span className='comment-count'>{comments.length}</span>
