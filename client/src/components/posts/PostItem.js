@@ -3,7 +3,7 @@ import React from 'react';
 import Moment from 'react-moment';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { addLike, removeLike } from '../../actions/post';
+import { addLike, deletePost, removeLike } from '../../actions/post';
 
 const PostItem = ({
   post: { _id: postId, text, name, avatar, user, likes, comments, date },
@@ -16,6 +16,10 @@ const PostItem = ({
   };
   const onRemoveLike = (postId) => {
     dispatch(removeLike(postId));
+  };
+
+  const onDelete = (postId) => {
+    dispatch(deletePost(postId));
   };
 
   return (
@@ -53,7 +57,11 @@ const PostItem = ({
           )}
         </Link>
         {!auth.loading && user === auth.user._id && (
-          <button type='button' className='btn btn-danger'>
+          <button
+            onClick={(e) => onDelete(postId)}
+            type='button'
+            className='btn btn-danger'
+          >
             <i className='fas fa-times'></i>
           </button>
         )}

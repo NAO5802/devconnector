@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getPosts } from '../../actions/post';
 import { Spinner } from '../layout/Spinner';
 import PostItem from './PostItem';
+import Alert from './../layout/Alert';
 
 export const Posts = () => {
   const dispatch = useDispatch();
@@ -15,6 +16,7 @@ export const Posts = () => {
 
   return (
     <section className='container'>
+      <Alert />
       {loading ? (
         <Spinner />
       ) : (
